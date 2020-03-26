@@ -1,1 +1,1 @@
-# projet-mul
+# projet-multiplication
