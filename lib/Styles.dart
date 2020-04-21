@@ -2,21 +2,22 @@ import 'package:flutter/material.dart';
 
 const kToolbarHeight = 195.0;
 
-class ButtonApp extends MaterialButton {
+class Bouton extends MaterialButton {
 
-  ButtonApp(String text, {width : 420.0, height : 71.0,  onPressed, fontSize : 30.0}):
+  Bouton(String text, {width : 420.0, height : 71.0,  onPressed, fontSize : 30.0}):
     super(
       child: Text(text,
         style: TextStyle(
           color: Colors.white,
           fontSize: fontSize,
         ),),
-      color: Color.fromRGBO(51, 51, 71, 1),
+      color: Color(0xFF323347),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25)
       ),
       height: height ,
       minWidth: width,
+      elevation: 3,
       onPressed: onPressed,
     );
 }
@@ -64,24 +65,56 @@ class NavBar extends PreferredSize {
 
 class StructPage extends Scaffold {
 
-  StructPage({List<Widget> children: const[]}):
+  StructPage({Widget child: null}):
+        super(
+          appBar: NavBar(),
+          body: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [Color(0xFF9ADFEB), Color(0XFFFFFFFF)]
+                )
+            ),
+            child: child,
+          ),
+      );
+}
+
+class ChampTexte extends Container {
+
+  ChampTexte({String placeholder:null, Widget icon:null, double padding:22.0}):
       super(
-        appBar: new NavBar(),
-        body: Center(
-            child: Container(
-              constraints: BoxConstraints.expand(),
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                      colors: [Color(0xFF9ADFEB), Color(0XFFFFFFFF)]
+        padding: EdgeInsets.only(left:padding),
+        width: 400.0,
+        decoration: BoxDecoration(
+            color: Color(0xFFFFFFFF),
+            borderRadius: BorderRadius.all(Radius.circular(2)),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                  color: Color(0x10000000),
+                  blurRadius: 6.0,
+                  offset: Offset(
+                      0.0, //x
+                      3.0 //y
                   )
-              ),
-              child: new Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: children,
-              ),
-            )
+              )
+            ]
+        ) ,
+        child: TextField(
+          style: TextStyle(
+              color: Color(0xFFB6AAB6),
+              fontSize: 30
+          ),
+          decoration: InputDecoration(
+              border: InputBorder.none,
+              prefixIcon: icon,
+              hintText: placeholder,
+              hintStyle: TextStyle(
+                  fontSize: 30,
+                  color: Color(0xFFB6AAB6)
+              )
+          ),
         ),
       );
 }

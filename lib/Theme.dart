@@ -19,7 +19,7 @@ class MyTheme{
         buttonColor: PrimaryColor,
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
-      )
+      ),
     );
   }
 }
