@@ -10,12 +10,14 @@ class MyTheme{
     final ThemeData base = ThemeData.light();
 
     return base.copyWith(
+      splashColor: Colors.transparent ,
+      highlightColor: Colors.transparent,
       primaryColor: PrimaryColor,
-
-
-
+      backgroundColor: BackgroundColor,
       buttonTheme: base.buttonTheme.copyWith(
-        buttonColor: PrimaryColor
+        buttonColor: PrimaryColor,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
       )
     );
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-//test
+
+const kToolbarHeight = 195.0;
+
 class ButtonApp extends MaterialButton {
 
   ButtonApp(String text, {width : 420.0, height : 71.0,  onPressed, fontSize : 30.0}):
@@ -18,3 +20,44 @@ class ButtonApp extends MaterialButton {
       onPressed: onPressed,
     );
 }
+
+class NavBar extends PreferredSize {
+
+  NavBar():
+      super(
+        preferredSize: Size.fromHeight(95.0),
+        child: Stack(
+          children: <Widget>[
+            AppBar(),
+            Padding(
+              padding: const EdgeInsets.only(top:30.0, left: 10.0, right: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.settings, color: Colors.white),
+                    iconSize: 64,
+                    onPressed: (){print("settings");},
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text("MasterMaths",
+                        style: TextStyle(
+                          fontSize: 50.0,
+                          color: Colors.white
+                        ),
+                      ),
+                    ],
+                  ),
+                  Image.asset("assets/images/IconLogo.png",
+                    height: 64,
+                    width: 64,)
+                ],
+              ),
+            ),
+          ],
+        )
+      );
+}
+
