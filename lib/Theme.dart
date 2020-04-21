@@ -9,7 +9,8 @@ class MyTheme{
   static ThemeData _buildTheme(){
     final ThemeData base = ThemeData.light();
 
-    return base.copyWith(
+    return ThemeData(
+      fontFamily: 'Segoe UI',
       splashColor: Colors.transparent ,
       highlightColor: Colors.transparent,
       primaryColor: PrimaryColor,

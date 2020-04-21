@@ -44,7 +44,8 @@ class NavBar extends PreferredSize {
                     children: <Widget>[
                       Text("MasterMaths",
                         style: TextStyle(
-                          fontSize: 50.0,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 40.0,
                           color: Colors.white
                         ),
                       ),
@@ -61,3 +62,26 @@ class NavBar extends PreferredSize {
       );
 }
 
+class StructPage extends Scaffold {
+
+  StructPage({List<Widget> children: const[]}):
+      super(
+        appBar: new NavBar(),
+        body: Center(
+            child: Container(
+              constraints: BoxConstraints.expand(),
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                      colors: [Color(0xFF9ADFEB), Color(0XFFFFFFFF)]
+                  )
+              ),
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: children,
+              ),
+            )
+        ),
+      );
+}

@@ -11,18 +11,12 @@ class Home extends StatefulWidget{
 class _Home extends State<Home>{
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: new NavBar(),
-      body: new Center(
-          child: new Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              new ButtonApp("bouton", onPressed: (){
-                print("ok");
-              })
-            ],
-          )
-      ),
+    return StructPage(
+      children: <Widget>[
+        new ButtonApp("bouton", onPressed: (){
+          print("ok");
+        })
+      ],
     );
   }
 
