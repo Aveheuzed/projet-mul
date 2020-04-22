@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testappmult/Menu.dart';
 import 'package:testappmult/Styles.dart';
 
 class Home extends StatefulWidget{
@@ -16,8 +17,7 @@ class _Home extends State<Home>{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-
-
+            Image.asset("assets/images/logo.png", scale: 2.8),// scale ?
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -27,7 +27,13 @@ class _Home extends State<Home>{
               ],
             ),
 
-            Bouton("S'identifier", onPressed: (){print("id");},)
+            Bouton("S'identifier", onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Menu()),
+                );
+              },
+            )
           ],
         ),
       )

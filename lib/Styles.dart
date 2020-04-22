@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 
-const kToolbarHeight = 195.0;
+const kToolbarHeight = 195.0; // inutile ?
+
+double screenWidth(BuildContext context) {
+  return MediaQuery.of(context).size.width;
+} // récupère les données du device, en l'occurence la largeur de l'écran
 
 class Bouton extends MaterialButton {
 
-  Bouton(String text, {width : 420.0, height : 71.0,  onPressed, fontSize : 30.0}):
+  Bouton(String text, {width : 325.0, height : 71.0,  onPressed, fontSize : 28.0}):
     super(
       child: Text(text,
         style: TextStyle(
           color: Colors.white,
           fontSize: fontSize,
+          fontWeight: FontWeight.w400
         ),),
       color: Color(0xFF323347),
       shape: RoundedRectangleBorder(
@@ -29,7 +34,9 @@ class NavBar extends PreferredSize {
         preferredSize: Size.fromHeight(95.0),
         child: Stack(
           children: <Widget>[
-            AppBar(),
+            AppBar(
+                automaticallyImplyLeading: false
+            ),
             Padding(
               padding: const EdgeInsets.only(top:30.0, left: 10.0, right: 10.0),
               child: Row(
@@ -69,6 +76,7 @@ class StructPage extends Scaffold {
         super(
           appBar: NavBar(),
           body: Container(
+            constraints: BoxConstraints.expand(), // étend l'arrière plan, important pour les écrans scrollables
             decoration: BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment.bottomCenter,
@@ -86,7 +94,8 @@ class ChampTexte extends Container {
   ChampTexte({String placeholder:null, Widget icon:null, double padding:22.0}):
       super(
         padding: EdgeInsets.only(left:padding),
-        width: 400.0,
+        width: 435.0,
+
         decoration: BoxDecoration(
             color: Color(0xFFFFFFFF),
             borderRadius: BorderRadius.all(Radius.circular(2)),
@@ -103,18 +112,100 @@ class ChampTexte extends Container {
         ) ,
         child: TextField(
           style: TextStyle(
-              color: Color(0xFFB6AAB6),
-              fontSize: 30
+            color: Color(0xFFB6AAB6),
+            fontSize: 28
           ),
           decoration: InputDecoration(
-              border: InputBorder.none,
-              prefixIcon: icon,
-              hintText: placeholder,
-              hintStyle: TextStyle(
-                  fontSize: 30,
-                  color: Color(0xFFB6AAB6)
-              )
+
+            border: InputBorder.none,
+            prefixIcon: icon,
+            hintText: placeholder,
+            hintStyle: TextStyle(
+                fontSize: 28,
+                color: Color(0xFFB6AAB6)
+            )
           ),
         ),
       );
+}
+
+class Depliant extends StatefulWidget{
+  final String titre;
+  final List<Widget> options;
+
+  Depliant({
+    this.titre,
+    this.options,
+  });
+
+
+  @override
+  _Depliant createState() => _Depliant();
+}
+
+class _Depliant extends State<Depliant>{
+
+  List<Widget> child;
+  bool etat;
+
+  @override
+  void initState() {
+    super.initState();
+    child =[];
+    child.add(
+      Bouton(
+        widget.titre,
+        onPressed: deplier,
+      )
+    );
+    etat = false;
+  }
+
+  void deplier(){
+    setState(() {
+      if (etat == false) {
+        child.add(
+          Column(
+            children: widget.options,
+          )
+        );
+        etat = true;
+      }
+      else {
+        child = [];
+        child.add(
+            Bouton(
+              widget.titre,
+              onPressed: deplier,
+            )
+        );
+        etat = false;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: child
+    );
+  }
+}
+
+class DepliantBouton extends Row {
+
+  DepliantBouton (String text, {onPressed}):
+    super(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children:<Widget>[
+        SizedBox(width: 0.0),
+        Bouton(
+          text,
+          onPressed: onPressed,
+          width: 230.0,
+          height: 50.0,
+        )
+      ]
+    );
 }
