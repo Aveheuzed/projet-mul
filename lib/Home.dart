@@ -17,7 +17,7 @@ class _Home extends State<Home>{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Image.asset("assets/images/logo.png", scale: 2.8),// scale ?
+            Image.asset("assets/images/logo.png", width: screenWidth(context) * 500,),// scale ?
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -27,7 +27,9 @@ class _Home extends State<Home>{
               ],
             ),
 
-            Bouton("S'identifier", onPressed: (){
+            Bouton(
+              "S'identifier",
+              onPressed: (){
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Menu()),
