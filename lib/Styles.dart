@@ -4,29 +4,6 @@ double screenWidth(BuildContext context) {
   return MediaQuery.of(context).size.width / 600;
 } // récupère les données du device, en l'occurence la largeur de l'écran sur base de largeur=600 parce que flemme de tout changer
 
-
-
-class Boutonobs extends MaterialButton {
-
-  Boutonobs(String text, {width : 325.0, height : 71.0,  onPressed, fontSize : 28.0}):
-    super(
-      child: Text(text,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: fontSize,
-          fontWeight: FontWeight.w400
-        ),),
-      color: Color(0xFF323347),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(25)
-      ),
-      height: height ,
-      minWidth: width,
-      elevation: 3,
-      onPressed: onPressed,
-    );
-}
-
 class Bouton extends StatelessWidget { // responsive
   final String text;
   final Function onPressed;
@@ -59,48 +36,6 @@ class Bouton extends StatelessWidget { // responsive
   }
 }
 
-class NavBarobs extends PreferredSize {
-
-  NavBarobs():
-      super(
-        preferredSize: Size.fromHeight(95.0),
-        child: Stack(
-          children: <Widget>[
-            AppBar(
-                automaticallyImplyLeading: false
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top:30.0, left: 10.0, right: 10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  IconButton(
-                    icon: Icon(Icons.settings, color: Colors.white),
-                    iconSize: 64,
-                    onPressed: (){print("settings");},
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text("MasterMaths",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 40.0,
-                          color: Colors.white
-                        ),
-                      ),
-                    ],
-                  ),
-                  Image.asset("assets/images/IconLogo.png",
-                    height: 64,
-                    width: 64,)
-                ],
-              ),
-            ),
-          ],
-        )
-      );
-}
 //hauteur de navbar constante => pas bon à voir si il est possible de corriger ça sinon il faut mettre la taille de son contenue constant pour eviter les problèmes
 class NavBar extends StatelessWidget implements PreferredSizeWidget { //responsive sauf la taille de la NavBar aie aie aie, pourquoi j'avais mis le padding en constante ?
   final Size preferredSize;
@@ -171,45 +106,6 @@ class StructPage extends Scaffold {
       );
 }
 
-class ChampTexteobs extends Container {
-
-  ChampTexteobs({String placeholder, Widget icon, double padding:22.0}):
-      super(
-        padding: EdgeInsets.only(left:padding),
-        width: 435.0,
-
-        decoration: BoxDecoration(
-            color: Color(0xFFFFFFFF),
-            borderRadius: BorderRadius.all(Radius.circular(2)),
-            boxShadow: <BoxShadow>[
-              BoxShadow(
-                  color: Color(0x10000000),
-                  blurRadius: 6.0,
-                  offset: Offset(
-                      0.0, //x
-                      3.0 //y
-                  )
-              )
-            ]
-        ) ,
-        child: TextField(
-          style: TextStyle(
-            color: Color(0xFFB6AAB6),
-            fontSize: 28
-          ),
-          decoration: InputDecoration(
-
-            border: InputBorder.none,
-            prefixIcon: icon,
-            hintText: placeholder,
-            hintStyle: TextStyle(
-                fontSize: 28,
-                color: Color(0xFFB6AAB6)
-            )
-          ),
-        ),
-      );
-}
 
 class ChampTexte extends StatelessWidget { //responsive
   final String placeholder;
