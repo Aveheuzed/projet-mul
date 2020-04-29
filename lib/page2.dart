@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'constantes.dart';
 class Page2Screen extends StatefulWidget {
   @override
@@ -11,84 +10,42 @@ class _Page2ScreenState extends State<Page2Screen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: PreferredSize( preferredSize: Size.fromHeight(85),
-          child : Stack(children:<Widget>[
-            AppBar(
-
-              backgroundColor: Color.fromRGBO(50, 51, 71, 1) ,
-
+    return StructPage1(navBar1(),context,
+        Container(
+          height: double.infinity,
+          child: SingleChildScrollView(
+            physics: AlwaysScrollableScrollPhysics(),
+            padding: EdgeInsets.symmetric(
+              horizontal: 120.0,
+              vertical: 120.0,
             ),
-            Positioned(
-              top: 15,left: 13,
-              child: Padding(padding: EdgeInsets.only(top:20,left: 5,bottom: 20),
-                child: Icon(Icons.settings,size: 68,color: Colors.white,),),),
-          ],
-          ),
-        ),
-        body:  GestureDetector(
-            onTap: () => FocusScope.of(context).unfocus(),
-            child: Stack(
+
+
+
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
 
-                Container(
-                  height: double.infinity,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter,
-                          colors: [Color(0xff9bdfeb) ,Color(0xfff3fbfc)]
-                      )
-                  ),
+                SizedBox(height:220.0),
+                bouton("Exercices lencadrées", onPressed:() {}),
+                SizedBox(
+                  height: 10.0,
+                ),
+                bouton("Exercices lencadrées", onPressed:() {}),
+                SizedBox(
+                  height: 10.0,
                 ),
 
-                Positioned(
-                  top:-20,
-                  child : Container(
-                    child : Image.asset("images/logo3.png", height: 430,),
-                    margin: EdgeInsets.only(right: 25),
-                  ),),
-                Container(
-                  height: double.infinity,
-                  child: SingleChildScrollView(
-                    physics: AlwaysScrollableScrollPhysics(),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 120.0,
-                      vertical: 120.0,
-                    ),
-
-
-
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-
-                        SizedBox(height:220.0),
-                        bouton("Exercices lencadrées", onPressed:() {}),
-                        SizedBox(
-                          height: 10.0,
-                        ),
-                        bouton("Exercices lencadrées", onPressed:() {}),
-                        SizedBox(
-                          height: 10.0,
-                        ),
-
-                        bouton("Exercices lencadrées", onPressed:() {}),
-                      ],
-                    ),
-
-
-
-                  ),
-                ),
+                bouton("Exercices lencadrées", onPressed:() {}),
               ],
             ),
 
+
+
           ),
+        ),1,"images/logofinale.png");
 
 
-    );
   }
 }
 

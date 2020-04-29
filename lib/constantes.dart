@@ -50,7 +50,7 @@ bouton (String text, {width:400.0 ,height:65.0,fontSize:25.0,fontWeight:FontWeig
         fontSize: fontSize, fontWeight: fontWeight,)),
       color: Color(0xff2c2d42),
       elevation: 3.0,
-      onPressed: () {},
+      onPressed: onPressed,
     ),
     width: width,
     height: height,
@@ -133,9 +133,9 @@ class navBar2 extends PreferredSize {
 
 class StructPage1 extends Scaffold{
 
- StructPage1(BuildContext context,Widget container,int existImage ,String image) :
+ StructPage1(Widget navbar,BuildContext context,Widget container,int existImage ,String image) :
       super (
-      appBar:navBar1(),
+      appBar:navbar,
       body:  GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Stack(

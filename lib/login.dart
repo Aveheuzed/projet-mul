@@ -1,7 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'constantes.dart';
 class LoginScreen extends StatefulWidget {
   @override
@@ -11,7 +11,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return StructPage1(context,
+    return StructPage1( navBar1(),context,
                Container(
                   height: double.infinity,
                 child: SingleChildScrollView(
@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       bouton ("S\'identifier",width:300.0 ,height:55.0,fontSize:25.0,fontWeight:FontWeight.w400,onPressed:
                       (){
-                      identifier(context);
+                      Navigator.of(context).pushNamed('/page2');
                         },),
                     ],
                   ),

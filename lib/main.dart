@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:multiplication/page2.dart';
+import 'generateurRoute.dart';
 import 'login.dart';
 void main() => runApp(MyApp());
 
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      initialRoute: '/login',
+      onGenerateRoute: GenerateurRoute.generateRoute ,
     );
   }
 }
