@@ -9,7 +9,6 @@ class Menu extends StatelessWidget{
     return WillPopScope(
       onWillPop: () async => false,// empèche le retour
       child: StructPage(
-        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -27,7 +26,6 @@ class Menu extends StatelessWidget{
             ],
           ),
         ),
-      ),
     );
   }
 }

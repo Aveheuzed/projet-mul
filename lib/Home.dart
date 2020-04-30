@@ -35,7 +35,7 @@ class _Home extends State<Home>{
                   MaterialPageRoute(builder: (context) => Menu()),
                 );
               },
-            )
+            ),
           ],
         ),
       )

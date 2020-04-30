@@ -90,7 +90,6 @@ class StructPage extends Scaffold {
 
   StructPage({Widget child}):
         super(
-          resizeToAvoidBottomInset: false,
           appBar: NavBar(),
           body: Container(
             constraints: BoxConstraints.expand(), // étend l'arrière plan, important pour les écrans scrollables
