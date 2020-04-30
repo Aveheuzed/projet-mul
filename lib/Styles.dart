@@ -86,25 +86,34 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget { //responsi
   }
 }
 
-class StructPage extends Scaffold {
 
-  StructPage({Widget child}):
-        super(
-          appBar: NavBar(),
-          body: Container(
-            constraints: BoxConstraints.expand(), // étend l'arrière plan, important pour les écrans scrollables
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                    colors: [Color(0xFF9ADFEB), Color(0XFFFFFFFF)]
-                )
-            ),
-            child: child,
+
+class StructPage extends StatelessWidget {
+
+  final Widget child;
+
+  StructPage({this.child});
+
+  Widget build(BuildContext context){
+    return Scaffold(
+      appBar: NavBar(),
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Container(
+          constraints: BoxConstraints.expand(), // étend l'arrière plan, important pour les écrans scrollables
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  colors: [Color(0xFF9ADFEB), Color(0XFFFFFFFF)]
+              )
           ),
-      );
+          child: child,
+        ),
+      ),
+    );
+  }
 }
-
 
 class ChampTexte extends StatelessWidget { //responsive
   final String placeholder;
