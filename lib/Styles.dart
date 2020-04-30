@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 double screenWidth(BuildContext context) {
@@ -32,7 +33,7 @@ class Bouton extends StatelessWidget { // responsive
       minWidth: screenWidth(context) * width,
       elevation: 3,
       onPressed: onPressed,
-        );
+    );
   }
 }
 
@@ -92,7 +93,7 @@ class StructPage extends StatelessWidget {
 
   final Widget child;
 
-  StructPage({this.child});
+  StructPage({this.child}): super();
 
   Widget build(BuildContext context){
     return Scaffold(
@@ -183,7 +184,6 @@ class _Depliant extends State<Depliant>{ // pas trop responsive, problème avec 
 
   List<Widget> child;
   bool etat;
-
   @override
   void initState() {
     super.initState();
@@ -229,19 +229,28 @@ class _Depliant extends State<Depliant>{ // pas trop responsive, problème avec 
   }
 }
 
-class DepliantBouton extends Row {
+class DepliantBouton extends StatelessWidget {
+  final String text;
+  final Function onPressed;
 
-  DepliantBouton (String text, {onPressed}):
-    super(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children:<Widget>[
-        SizedBox(width: 0.0),
-        Bouton(
-          text,
-          onPressed: onPressed,
-          width: 230.0,
-          height: 50.0,
-        )
-      ]
+  DepliantBouton(this.text, {this.onPressed}): super();
+
+  @override
+  Widget build(BuildContext context){
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children:<Widget>[
+          SizedBox(width: 0.0),
+          Container( // Pour une raison inconnue la taille du conteneur du bouton est par défaut plus grande que le bouton lui même j'ai donc du l'envelopper dans un containeur de taille identique au bouton
+            height: screenWidth(context)*50.0,
+            child: Bouton(
+              text,
+              onPressed: onPressed,
+              width: 230.0,
+              height: 50.0,
+            ),
+          )
+        ]
     );
+  }
 }
