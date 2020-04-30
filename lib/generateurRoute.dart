@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'package:multiplication/reglages.dart';
+import 'exercicesLibresPage.dart';
 import 'login.dart';
 import 'page2.dart';
 class GenerateurRoute{
@@ -10,6 +11,8 @@ class GenerateurRoute{
        return MaterialPageRoute(builder: (content)=>LoginScreen());
       case '/page2' :
         return MaterialPageRoute(builder: (content)=>Page2Screen());
+      case '/exerciceslibres':
+         return  MaterialPageRoute(builder: (content)=>ExercicesLibres());
 
   }
 }

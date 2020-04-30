@@ -1,4 +1,5 @@
 
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -64,33 +65,35 @@ bouton (String text, {width:400.0 ,height:65.0,fontSize:25.0,fontWeight:FontWeig
 
 class navBar1 extends PreferredSize {
 
-  navBar1() :
+  navBar1(BuildContext context) :
         super(
           preferredSize: Size.fromHeight(85.0),
           child: Stack(
             children: <Widget>[
-              AppBar(
+              AppBar( leading: Container(),
               ),
 
               Positioned(
                 top: 15, left: 13,
                 child: Padding(
                   padding: EdgeInsets.only(top: 20, left: 5, bottom: 20),
-                  child: Icon(
-                    Icons.settings, size: 68, color: Colors.white,),),),
+                    child:IconButton(
+                      icon: Icon(Icons.settings, color: Colors.white),
+                      iconSize: 64,
+                      onPressed: (){Navigator.of(context).pushNamed('/reglages');},
+                    ),),),
             ],
           )
       );
 }
 class navBar2 extends PreferredSize {
 
-  navBar2() :
+  navBar2(BuildContext context) :
         super(
         preferredSize: Size.fromHeight(85),
           child : Stack(children:<Widget>[
             AppBar(
-
-              backgroundColor: Color(0xff2c2d42) ,
+              leading: Container(),
 
             ),
             Positioned(
@@ -102,7 +105,7 @@ class navBar2 extends PreferredSize {
                     IconButton(
                       icon: Icon(Icons.settings, color: Colors.white),
                       iconSize: 64,
-                      onPressed: (){print("settings");},
+                      onPressed: (){Navigator.of(context).pushNamed('/reglages');},
                     ),
                     Container(
                       padding: EdgeInsets.symmetric(

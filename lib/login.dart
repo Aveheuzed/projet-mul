@@ -11,7 +11,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return StructPage1( navBar1(),context,
+    return StructPage1( navBar1(context),context,
                Container(
                   height: double.infinity,
                 child: SingleChildScrollView(
