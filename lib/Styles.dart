@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 double screenWidth(BuildContext context) {
-  return MediaQuery.of(context).size.width / 600;
+  return MediaQuery.of(context).size.width / 768;
 } // récupère les données du device, en l'occurence la largeur de l'écran sur base de largeur=600 parce que flemme de tout changer
 
 class Bouton extends StatelessWidget { // responsive
@@ -13,7 +13,7 @@ class Bouton extends StatelessWidget { // responsive
   final double fontSize;
 
 
-  Bouton(this.text, {this.onPressed, this.width = 325, this.height = 71.0, this.fontSize = 28.0}) :super();
+  Bouton(this.text, {this.onPressed, this.width = 417, this.height = 71.0, this.fontSize = 30.0}) :super();
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +116,7 @@ class StructPage extends StatelessWidget {
   }
 }
 
-class ChampTexte extends StatelessWidget { //responsive
+class ChampTexte extends StatelessWidget { //responsive //height ?
   final String placeholder;
   final Widget icon;
   final double padding;
@@ -124,7 +124,7 @@ class ChampTexte extends StatelessWidget { //responsive
   final double width;
 
 
-  ChampTexte({this.placeholder, this.icon, this.padding = 22.0, this.fontSize = 28.0, this.width = 435.0}): super();
+  ChampTexte({this.placeholder, this.icon, this.padding = 22.0, this.fontSize = 30.0, this.width = 557.0}): super();
 
   @override
   Widget build(BuildContext context) {
@@ -246,8 +246,9 @@ class DepliantBouton extends StatelessWidget {
             child: Bouton(
               text,
               onPressed: onPressed,
-              width: 230.0,
+              width: 296.0,
               height: 50.0,
+              fontSize: 24.0,
             ),
           )
         ]

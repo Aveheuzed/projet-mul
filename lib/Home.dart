@@ -20,7 +20,7 @@ class _Home extends State<Home>{
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Image.asset("assets/images/logo.png", width: screenWidth(context) * 500,),// scale ?
+                Image.asset("assets/images/logo.png", width: screenWidth(context) * 669,),// scale ?
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
