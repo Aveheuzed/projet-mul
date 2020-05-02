@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 double screenWidth(BuildContext context) {
   return MediaQuery.of(context).size.width / 768;
-} // récupère les données du device, en l'occurence la largeur de l'écran sur base de largeur=600 parce que flemme de tout changer
+} // récupère les données du device, en l'occurence la largeur de l'écran pour calculer un ratio par rapport à la largeur de l'écran de la maquette
+// il suffit donc de faire screenWidht * larrgeur de l'objet sur la maquette pour obtenir exactement le même rendu
 
 class Bouton extends StatelessWidget { // responsive
   final String text;
