@@ -39,10 +39,10 @@ class Bouton extends StatelessWidget { // responsive
 }
 
 //hauteur de navbar constante => pas bon à voir si il est possible de corriger ça sinon il faut mettre la taille de son contenue constant pour eviter les problèmes
-class NavBar extends StatelessWidget implements PreferredSizeWidget { //responsive sauf la taille de la NavBar aie aie aie, pourquoi j'avais mis le padding en constante ?
+class NavBarobs extends StatelessWidget implements PreferredSizeWidget { //responsive sauf la taille de la NavBar aie aie aie, pourquoi j'avais mis le padding en constante ?
   final Size preferredSize;
 
-  NavBar({this.preferredSize = const Size.fromHeight(95.0)}): super();
+  NavBarobs({this.preferredSize = const Size.fromHeight(95.0)}): super();
 
 
   @override
@@ -88,29 +88,92 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget { //responsi
   }
 }
 
+class NavBar extends PreferredSize {
+
+  NavBar(BuildContext context, {int existImage:0 } ):super (
+    preferredSize: Size.fromHeight(screenWidth(context) * 107),
+    child: Stack(children: <Widget>[
+      AppBar(
+        leading: Container(),
+
+      ),
+      existImage==1?
+      Padding(
+        padding: EdgeInsets.only(top: screenWidth(context) * 17.0, left: screenWidth(context) * 10.0, right: screenWidth(context) * 10.0),
+        child:Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.settings, color: Colors.white),
+              iconSize: screenWidth(context) * 64,
+              onPressed: (){print("settings");},
+            ),
+          ]
+        ),
+      )
+          :
+      Padding(
+        padding: EdgeInsets.only(top: screenWidth(context) * 10.0, left: screenWidth(context) * 10.0, right: screenWidth(context) * 10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.settings, color: Colors.white),
+              iconSize: screenWidth(context) * 64,
+              onPressed: (){print("settings");},
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("MasterMaths",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: screenWidth(context) * 40.0,
+                      color: Colors.white
+                  ),
+                ),
+              ],
+            ),
+            Image.asset("assets/images/IconLogo.png",
+              height: screenWidth(context) * 64,
+              width: screenWidth(context) * 64,)
+          ],
+        ),
+      ),
+    ],
+
+
+    ),
+
+  );
+}
+
 
 
 class StructPage extends StatelessWidget {
 
   final Widget child;
+  int existImage;
 
-  StructPage({this.child}): super();
+  StructPage({this.child, this.existImage=0}): super();
 
   Widget build(BuildContext context){
-    return Scaffold(
-      appBar: NavBar(),
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: Container(
-          constraints: BoxConstraints.expand(), // étend l'arrière plan, important pour les écrans scrollables
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  colors: [Color(0xFF9ADFEB), Color(0XFFFFFFFF)]
-              )
+    return SafeArea(
+      child: Scaffold(
+        appBar: NavBar(context, existImage: existImage,),
+        body: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Container(
+            constraints: BoxConstraints.expand(), // étend l'arrière plan, important pour les écrans scrollables
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [Color(0xFF9ADFEB), Color(0XFFFFFFFF)]
+                )
+            ),
+            child: child,
           ),
-          child: child,
         ),
       ),
     );

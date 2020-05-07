@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:testappmult/Home.dart';
 import 'package:testappmult/Menu.dart';
 import 'package:testappmult/ExerciceLibres.dart';
+import 'package:testappmult/Exercice1.dart';
+
 class GenerateurRoute{
   static Route<dynamic> generateRoute(RouteSettings settings){
    // final args =settings.arguments; // à quoi ça sert ?
@@ -12,7 +14,9 @@ class GenerateurRoute{
         return MaterialPageRoute(builder: (content)=>Menu());
       case '/ExercicesLibres':
         return  MaterialPageRoute(builder: (content)=>ExercicesLibres());
-
+      case '/Exercice1':
+        return  MaterialPageRoute(builder: (content)=>Exercice1());
     }
+    return  MaterialPageRoute(builder: (content)=>Menu());
   }
 }

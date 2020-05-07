@@ -36,7 +36,7 @@ class _ExercicesLibres extends State<ExercicesLibres>{
                     options: <Widget>[
                       DepliantBouton(
                         "Niveau 1",
-                        onPressed: (){},
+                        onPressed: (){Navigator.of(context).pushNamed('/Exercice1');},
                       ),
                       DepliantBouton(
                         "Niveau 2",
