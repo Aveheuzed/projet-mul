@@ -12,7 +12,7 @@ class _Page2ScreenState extends State<Page2Screen> {
   Widget build(BuildContext context) {
    return WillPopScope (
      onWillPop:()=>Future.value(false),
-    child: StructPage1(navBar1(context),context,
+    child: StructPage(navBar1(context),
         Container(
             padding: EdgeInsets.symmetric(
               horizontal: 120.0,

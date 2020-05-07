@@ -10,7 +10,7 @@ class _Exerciceslibres extends State<ExercicesLibres> {
 
   @override
   Widget build(BuildContext context) {
-    return StructPage1(navBar2(context),context,
+    return StructPage(navBar2(),
 
         Positioned(
           top:-60,right: 50,left: 50,
