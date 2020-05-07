@@ -68,11 +68,10 @@ final Function onPressed;
 
 
 // ignore: camel_case_types
-class navBar extends  SafeArea {
+class navBar extends PreferredSize {
 
   navBar(int existeImage , BuildContext context ):super (
-      child: SafeArea(
-      child: PreferredSize(preferredSize: Size.fromHeight(screenWidth(context) * 85),
+      preferredSize: Size.fromHeight(screenWidth(context) * 85),
       child: Stack(children: <Widget>[
         AppBar(
           leading: Container(),
@@ -129,8 +128,7 @@ class navBar extends  SafeArea {
 
 
       ),
-      ),
-    ),
+
   );
   }
 
