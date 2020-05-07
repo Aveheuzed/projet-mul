@@ -11,7 +11,7 @@ class MyTheme{
 
     return ThemeData(
       fontFamily: 'Segoe UI',
-      splashColor: Colors.transparent ,
+      splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       primaryColor: PrimaryColor,
       backgroundColor: BackgroundColor,

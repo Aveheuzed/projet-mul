@@ -13,10 +13,7 @@ class Menu extends StatelessWidget{
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Bouton("Éxercices libres", onPressed: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ExercicesLibres()),
-                  );
+                Navigator.of(context).pushNamed('/ExercicesLibres');
                 },
               ),
               SizedBox(height: 40),
