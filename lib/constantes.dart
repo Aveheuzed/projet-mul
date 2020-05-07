@@ -66,40 +66,26 @@ final Function onPressed;
 
 
 
-class navBar1 extends PreferredSize {
 
-  navBar1(BuildContext context) :
-  super(
-    preferredSize : Size.fromHeight(screenWidth(context)*85.0),
-    child: Stack(
-    children: <Widget>[
-    AppBar( leading: Container(),
+// ignore: camel_case_types
+class navBar extends  SafeArea {
 
-    ),
-        Padding(
-    padding: EdgeInsets.only( left:screenWidth(context)* 5, bottom: screenWidth(context)*20),
-    child:IconButton(
-    icon: Icon(Icons.settings, color: Colors.white),
-    iconSize:screenWidth(context)* 64,
-    onPressed: (){Navigator.of(context).pushNamed('/reglages');},
-    ),),],
-
-    )
-
-     );
-  }
-
-
-class navBar2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
+  navBar(int existeImage , BuildContext context ):super (
+      child: SafeArea(
       child: PreferredSize(preferredSize: Size.fromHeight(screenWidth(context) * 85),
       child: Stack(children: <Widget>[
         AppBar(
           leading: Container(),
 
         ),
+        existeImage==1?
+        Padding(
+          padding: EdgeInsets.only( left:screenWidth(context)* 5, bottom: screenWidth(context)*20),
+          child:IconButton(
+            icon: Icon(Icons.settings, color: Colors.white),
+            iconSize:screenWidth(context)* 64,
+            onPressed: (){Navigator.of(context).pushNamed('/reglages');},
+          ),):
         Positioned(
           top: screenWidth(context) * 10,
           child: Center(
@@ -144,9 +130,10 @@ class navBar2 extends StatelessWidget {
 
       ),
       ),
-    );
+    ),
+  );
   }
-}
+
 class StructPage extends StatelessWidget{
   final Widget navbar;
   final Widget container;

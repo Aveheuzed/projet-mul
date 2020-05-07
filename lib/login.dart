@@ -12,7 +12,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
             return SafeArea(
-              child:StructPage( navBar1(context),
+              child:StructPage( navBar(1,context),
                Container(
                   height: double.infinity,
 
