@@ -38,55 +38,6 @@ class Bouton extends StatelessWidget { // responsive
   }
 }
 
-//hauteur de navbar constante => pas bon à voir si il est possible de corriger ça sinon il faut mettre la taille de son contenue constant pour eviter les problèmes
-class NavBarobs extends StatelessWidget implements PreferredSizeWidget { //responsive sauf la taille de la NavBar aie aie aie, pourquoi j'avais mis le padding en constante ?
-  final Size preferredSize;
-
-  NavBarobs({this.preferredSize = const Size.fromHeight(95.0)}): super();
-
-
-  @override
-  Widget build(BuildContext context) {
-    return PreferredSize(
-        preferredSize: Size.fromHeight(screenWidth(context) * preferredSize.height),
-        child: Stack(
-          children: <Widget>[
-            AppBar(
-                automaticallyImplyLeading: false
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: screenWidth(context) * 30.0, left: screenWidth(context) * 10.0, right: screenWidth(context) * 10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  IconButton(
-                    icon: Icon(Icons.settings, color: Colors.white),
-                    iconSize: screenWidth(context) * 64,
-                    onPressed: (){print("settings");},
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text("MasterMaths",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: screenWidth(context) * 40.0,
-                            color: Colors.white
-                        ),
-                      ),
-                    ],
-                  ),
-                  Image.asset("assets/images/IconLogo.png",
-                    height: screenWidth(context) * 64,
-                    width: screenWidth(context) * 64,)
-                ],
-              ),
-            ),
-          ],
-        )
-    );
-  }
-}
 
 class NavBar extends PreferredSize {
 
