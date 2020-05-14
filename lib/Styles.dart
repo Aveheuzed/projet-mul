@@ -359,7 +359,7 @@ class ChampReponseCorrection extends StatelessWidget{
   final int reponse;
   final int color;
 
-  ChampReponseCorrection({this.titre, this.reponse, this.fontSizeTitre = 28.0, this.fontSizeReponse = 80, this.width = 279.0, this.color=0x10000000}):super();
+  ChampReponseCorrection({this.titre, this.reponse, this.fontSizeTitre = 28.0, this.fontSizeReponse = 80, this.width = 279.0, this.color=0xFFFFFFFF}):super();
   @override
   Widget build(BuildContext context) {
     return Container(
