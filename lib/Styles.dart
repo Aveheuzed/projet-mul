@@ -291,7 +291,7 @@ class ChampReponse extends StatelessWidget { //responsive //height ?
 
     return Container(
         padding: EdgeInsets.only(top: screenWidth(context) * 5),
-        width: width,
+        width: screenWidth(context)*width,
 
         decoration: BoxDecoration(
             color: couleur,
@@ -320,6 +320,7 @@ class ChampReponse extends StatelessWidget { //responsive //height ?
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextField(
+
                 onSubmitted: onSubmitted,
                 controller: controller,
                 textAlign: TextAlign.center,
@@ -346,6 +347,61 @@ class ChampReponse extends StatelessWidget { //responsive //height ?
             ),
           ],
         )
+    );
+  }
+}
+
+class ChampReponseCorrection extends StatelessWidget{
+  final String titre;
+  final double fontSizeTitre;
+  final double fontSizeReponse;
+  final double width;
+  final int reponse;
+  final int color;
+
+  ChampReponseCorrection({this.titre, this.reponse, this.fontSizeTitre = 28.0, this.fontSizeReponse = 80, this.width = 279.0, this.color=0x10000000}):super();
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(top: screenWidth(context) * 5),
+      width: screenWidth(context)*width,
+
+      decoration: BoxDecoration(
+        color: Color(color),
+        borderRadius: BorderRadius.all(Radius.circular(36)),
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+          color: Color(0x10000000),
+          blurRadius: 6.0,
+          offset: Offset(
+              0.0, //x
+              3.0 //y
+            )
+          )
+        ]
+      ),
+      child:Column(
+        children: <Widget>[
+          Text(
+            titre,
+            style: TextStyle(
+              color: Color(0xffB6AAB6),
+              fontWeight: FontWeight.w600,
+              fontSize: fontSizeTitre,
+            ),
+          ),
+          Container(
+            child: Text(
+              reponse.toString(),
+              style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  color: Color(0xff323347),
+                  fontSize: fontSizeReponse
+              ),
+            ),
+          )
+        ],
+      )
     );
   }
 }
