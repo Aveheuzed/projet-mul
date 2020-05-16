@@ -1,225 +1,353 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-final kHintTextStyle = TextStyle(
-  color: Colors.grey,
-
-
-);
-
-final kLabelStyle = TextStyle(
-  color: Colors.white,
-  fontWeight: FontWeight.bold,
-
-);
-
-final kBoxDecorationStyle = BoxDecoration(
-  color: Colors.white,
-  boxShadow: [
-    BoxShadow(
-      color: Colors.black38,
-      blurRadius: 9.0, // has the effect of softening the shadow
-     // has the effect of extending the shadow
-      offset: Offset(
-        2.0, // horizontal, move right 10
-        1.0, // vertical, move down 10
-      ),
-    ),
-  ],
-);
 double screenWidth(BuildContext context) {
-  return MediaQuery.of(context).size.width / 600;
-}
-screenOrientation(BuildContext context){
-  Orientation orientation=MediaQuery.of(context).orientation;
-  return orientation;
-}
-// ignore: non_constant_identifier_names, camel_case_types
-class bouton extends StatelessWidget{
+  return MediaQuery.of(context).size.width / 768;
+} // récupère les données du device, en l'occurence la largeur de l'écran pour calculer un ratio par rapport à la largeur de l'écran de la maquette
+// il suffit donc de faire screenWidht * larrgeur de l'objet sur la maquette pour obtenir exactement le même rendu
+
+class Bouton extends StatelessWidget { // responsive
   final String text;
+  final Function onPressed;
+  final double width;
+  final double height;
   final double fontSize;
-final double width;
-final double height;
-final Function onPressed;
-  bouton(this.text,{this.width:400.0 ,this.height:65.0,this.fontSize:25.0,  this.onPressed}):super();
+
+
+  Bouton(this.text, {this.onPressed, this.width = 417, this.height = 71.0, this.fontSize = 30.0}) :super();
+
   @override
   Widget build(BuildContext context) {
-   return Container(
-    child: RaisedButton(
-    shape: new RoundedRectangleBorder(
-    borderRadius: new BorderRadius.circular(18.0),
-    ),
-    child: Text(text, style: TextStyle(color: Colors.white,
-    fontSize: screenWidth(context)*fontSize, fontWeight:FontWeight.w400)),
-    color: Color(0xff2c2d42),
-    elevation: 3.0,
-    onPressed: onPressed,
-    ),
-    width: screenWidth(context)*width,
-    height:screenWidth(context)* height,
-
+    return MaterialButton(
+      child: Text(text,
+        style: TextStyle(
+            color: Colors.white,
+            fontSize: screenWidth(context) * fontSize,
+            fontWeight: FontWeight.w400
+        ),
+      ),
+      color: Color(0xFF323347),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(screenWidth(context) * 25)
+      ),
+      height:  screenWidth(context) * height,
+      minWidth: screenWidth(context) * width,
+      elevation: 3,
+      onPressed: onPressed,
     );
   }
-
-  }
-
+}
 
 
+class NavBar extends PreferredSize {
 
-// ignore: camel_case_types
-class navBar extends PreferredSize {
-
-  navBar(int existeImage , BuildContext context ):super (
-      preferredSize: Size.fromHeight(screenWidth(context) * 85),
-      child: Stack(children: <Widget>[
-        AppBar(
-          leading: Container(),
-
-        ),
-        existeImage==1?
-        Padding(
-          padding: EdgeInsets.only( left:screenWidth(context)* 5, bottom: screenWidth(context)*20),
-          child:IconButton(
-            icon: Icon(Icons.settings, color: Colors.white),
-            iconSize:screenWidth(context)* 64,
-            onPressed: (){Navigator.of(context).pushNamed('/reglages');},
-          ),):
-        Positioned(
-          top: screenWidth(context) * 10,
-          child: Center(
-          child: Padding(padding: EdgeInsets.only(
-              top: screenWidth(context) * 20,
-              left: screenWidth(context) * 5,
-              bottom: screenWidth(context) * 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                IconButton(
-                  icon: Icon(Icons.settings, color: Colors.white),
-                  iconSize: 64,
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/reglages');
-                  },
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: screenWidth(context) * 100.0,
-                  ),
-                  child: Text("MasterMaths",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: screenWidth(context) * 40.0,
-                        color: Colors.white
-                    ),
-                  ),
-
-                ),
-                Image.asset("images/logo3.png",
-                  height: screenWidth(context) * 67,
-                )
-              ],
-            ),
-          ),
-          ),
-        )
-
-      ],
-
+  NavBar(BuildContext context, {int existImage:0 } ):super (
+    preferredSize: Size.fromHeight(screenWidth(context) * 107),
+    child: Stack(children: <Widget>[
+      AppBar(
+        leading: Container(),
 
       ),
-
-  );
-  }
-
-class StructPage extends StatelessWidget{
-  final Widget navbar;
-  final Widget container;
-  final int existImage;
-  final String image;
-  StructPage(this.navbar,this.container,this.existImage ,this.image):super ();
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: navbar,
-      body: SafeArea(
-        child: GestureDetector(
-            onTap: () => FocusScope.of(context).unfocus(),
-            child: Stack(
+      existImage==1?
+      Padding(
+        padding: EdgeInsets.only(top: screenWidth(context) * 17.0, left: screenWidth(context) * 10.0, right: screenWidth(context) * 10.0),
+        child:Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(Icons.settings, color: Colors.white),
+                iconSize: screenWidth(context) * 64,
+                onPressed: (){print("settings");},
+              ),
+            ]
+        ),
+      )
+          :
+      Padding(
+        padding: EdgeInsets.only(top: screenWidth(context) * 10.0, left: screenWidth(context) * 10.0, right: screenWidth(context) * 10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.settings, color: Colors.white),
+              iconSize: screenWidth(context) * 64,
+              onPressed: (){print("settings");},
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-
-                Container(
-                  height: double.infinity,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter,
-                          colors: [Color(0xff9bdfeb), Color(0xfff3fbfc)]
-                      )
+                Text("MasterMaths",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: screenWidth(context) * 40.0,
+                      color: Colors.white
                   ),
                 ),
-
-               Padding( padding: EdgeInsets.symmetric(
-                 vertical: screenWidth(context)*12.0,
-               ),
-                  child:
-                  Container(
-                    child: (existImage == 1) ? Image.asset(
-                      image, height: screenWidth(context) * 430,width:screenWidth(context) * 570) : null,
-                  ),
-                  ),
-
-                Container(child: container),
               ],
+            ),
+            Image.asset("assets/images/IconLogo.png",
+              height: screenWidth(context) * 64,
+              width: screenWidth(context) * 64,)
+          ],
+        ),
+      ),
+    ],
+
+
+    ),
+
+  );
+}
+
+
+
+class StructPage extends StatelessWidget {
+
+  final Widget child;
+  final int existImage;
+
+  StructPage({this.child, this.existImage=0}): super();
+
+  Widget build(BuildContext context){
+    return SafeArea(
+      child: Scaffold(
+        appBar: NavBar(context, existImage: existImage,),
+        body: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Container(
+            constraints: BoxConstraints.expand(), // étend l'arrière plan, important pour les écrans scrollables
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [Color(0xFF9ADFEB), Color(0XFFFFFFFF)]
+                )
+            ),
+            child: child,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ChampTexte extends StatelessWidget { //responsive //height ?
+  final String placeholder;
+  final Widget icon;
+  final double padding;
+  final double fontSize;
+  final double width;
+
+
+  ChampTexte({this.placeholder, this.icon, this.padding = 22.0, this.fontSize = 30.0, this.width = 557.0}): super();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(left: screenWidth(context) * padding),
+      width: screenWidth(context) * width,
+
+      decoration: BoxDecoration(
+          color: Color(0xFFFFFFFF),
+          borderRadius: BorderRadius.all(Radius.circular(2)),
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+                color: Color(0x10000000),
+                blurRadius: 6.0,
+                offset: Offset(
+                    0.0, //x
+                    3.0 //y
+                )
+            )
+          ]
+      ) ,
+      child: TextField(
+        style: TextStyle(
+            color: Color(0xFFB6AAB6),
+            fontSize: screenWidth(context) * fontSize
+        ),
+        decoration: InputDecoration(
+
+            border: InputBorder.none,
+            prefixIcon: icon,
+            hintText: placeholder,
+            hintStyle: TextStyle(
+                fontSize: screenWidth(context) * fontSize,
+                color: Color(0xFFB6AAB6)
             )
         ),
       ),
-
     );
   }
+}
+
+class Depliant extends StatefulWidget{
+  final String titre;
+  final List<Widget> options;
+
+  Depliant({
+    this.titre,
+    this.options,
+  });
+
+
+  @override
+  _Depliant createState() => _Depliant();
+}
+
+class _Depliant extends State<Depliant>{ // pas trop responsive, problème avec les changements de ratio, à voir si c'est genant
+
+  List<Widget> child;
+  bool etat;
+  @override
+  void initState() {
+    super.initState();
+    child =[];
+    child.add(
+        Bouton(
+          widget.titre,
+          onPressed: deplier,
+        )
+    );
+    etat = false;
   }
-  class InputForm extends StatelessWidget {
-    final String text;
-    final int ExistIcon;
-    final double height;
-    final IconData icon;
-    final double width;
 
-    InputForm(this.text, this.ExistIcon, this.icon, {this.height: 55.0, this.width: 450})
-        :super();
+  void deplier(){
+    setState(() {
+      if (etat == false) {
+        child.add(
+            Column(
+              children: widget.options,
+            )
+        );
+        etat = true;
+      }
+      else {
+        child = [];
+        child.add(
+            Bouton(
+              widget.titre,
+              onPressed: deplier,
+            )
+        );
+        etat = false;
+      }
+    });
+  }
 
-    @override
-    Widget build(BuildContext context) {
-      return Container(
-        alignment: Alignment.centerLeft,
-        decoration: kBoxDecorationStyle,
-        height: screenWidth(context)*height,
-        width: screenWidth(context)*width,
-        child: TextField(
-          keyboardType: TextInputType.text,
-          style: TextStyle(
-            color: Colors.black,
-            fontFamily: 'OpenSans',
-            fontSize: screenWidth(context)*25,
-          ),
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            // contentPadding: EdgeInsets.only(top: 14.0),
-            prefixIcon: Icon(
-              (ExistIcon == 1) ? icon : null,
-              color: Colors.grey,
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: child
+    );
+  }
+}
+
+class DepliantBouton extends StatelessWidget {
+  final String text;
+  final Function onPressed;
+
+  DepliantBouton(this.text, {this.onPressed}): super();
+
+  @override
+  Widget build(BuildContext context){
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children:<Widget>[
+          SizedBox(width: 0.0),
+          Container( // Pour une raison inconnue la taille du conteneur du bouton est par défaut plus grande que le bouton lui même j'ai donc du l'envelopper dans un containeur de taille identique au bouton
+            height: screenWidth(context)*50.0,
+            child: Bouton(
+              text,
+              onPressed: onPressed,
+              width: 296.0,
+              height: 50.0,
+              fontSize: 24.0,
             ),
-            hintText: text,
-            hintStyle: kHintTextStyle,
-          ),
-        ),
-
-      );
-    }
+          )
+        ]
+    );
   }
-    
- 
+}
+
+class ChampReponse extends StatelessWidget { //responsive //height ?
+  final bool enabled;
+  final String titre;
+  final double fontSizeTitre;
+  final double fontSizeReponse;
+  final double width;
+  final Function onChanged;
+  final Function onSubmitted;
+  final TextEditingController controller;
 
 
+  ChampReponse({this.titre, this.controller, this.onSubmitted, this.onChanged, this.enabled=true, this.fontSizeTitre = 28.0, this.fontSizeReponse = 80, this.width = 279.0}): super();
 
+  @override
+  Widget build(BuildContext context) {
+    Color couleur;
+    if(enabled) couleur = Color(0xffffffff);else couleur = Color(0xffD4D4D4);
+
+    return Container(
+        padding: EdgeInsets.only(top: screenWidth(context) * 5),
+        width: width*screenWidth(context),
+
+        decoration: BoxDecoration(
+            color: couleur,
+            borderRadius: BorderRadius.all(Radius.circular(36)),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                  color: Color(0x10000000),
+                  blurRadius: 6.0,
+                  offset: Offset(
+                      0.0, //x
+                      3.0 //y
+                  )
+              )
+            ]
+        ),
+        child: Column(
+          children: <Widget>[
+            if(titre!=null)
+            Text(
+              titre,
+              style: TextStyle(
+                color: Color(0xffB6AAB6),
+                fontWeight: FontWeight.w600,
+                fontSize: fontSizeTitre,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextField(
+                onSubmitted: onSubmitted,
+                controller: controller,
+                textAlign: TextAlign.center,
+                inputFormatters: <TextInputFormatter>[
+                  WhitelistingTextInputFormatter.digitsOnly,
+                  LengthLimitingTextInputFormatter(4)
+                ],
+                keyboardType: TextInputType.numberWithOptions(decimal: false, signed: false),
+                onChanged: onChanged,
+                enabled: enabled,
+                style: TextStyle(
+                    fontWeight: FontWeight.w900,
+                    color: Color(0xff323347),
+                    fontSize: fontSizeReponse
+                ),
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  errorBorder: InputBorder.none,
+                  disabledBorder: InputBorder.none,
+                ),
+              ),
+            ),
+          ],
+        )
+    );
+  }
+}

@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+/*import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'constantes.dart';
 class Page2Screen extends StatefulWidget {
@@ -49,7 +49,7 @@ class _Page2ScreenState extends State<Page2Screen> {
     );
 
   }
-}
+}*/
 
 
 
