@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:testappmult/Styles.dart';
 import 'dart:math';
+import 'package:testappmult/Exercice1Correction.dart';
 
 
 class Exercice1 extends StatefulWidget{
@@ -75,11 +76,15 @@ class _Exercice1 extends State<Exercice1>{
 
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Exercice1(niveau: widget.niveau,)),
+          MaterialPageRoute(builder: (context) => Exercice1Correction(niveau: widget.niveau, type: widget.type, nombre: nombre, reponse: int.parse(doubleController.text), success: true,)),
         );
 
       }else{
         print("echec");
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Exercice1Correction(niveau: widget.niveau, type: widget.type, nombre: nombre, reponse: int.parse(doubleController.text), success: false,)),
+        );
       }
 
     }else if ( int.parse(moitieController.text) == (nombre/2) ) {
@@ -87,10 +92,14 @@ class _Exercice1 extends State<Exercice1>{
 
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Exercice1(niveau: widget.niveau,)),
+        MaterialPageRoute(builder: (context) => Exercice1Correction(niveau: widget.niveau, type: widget.type, nombre: nombre, reponse: int.parse(moitieController.text), success: true,)),
       );
     }else{
       print("echec");
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Exercice1Correction(niveau: widget.niveau, type: widget.type, nombre: nombre, reponse: int.parse(moitieController.text), success: false,)),
+      );
     }
 
   }
