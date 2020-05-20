@@ -99,7 +99,7 @@ class _Exercice1 extends State<Exercice1>{
   Widget build(BuildContext context) {
 
     return WillPopScope(
-      onWillPop: () async => false,// empèche le retour
+      onWillPop: () async => false,// empêche le retour
       child: StructPage(
           child: SingleChildScrollView(
             child: Container(

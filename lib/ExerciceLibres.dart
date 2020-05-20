@@ -15,7 +15,7 @@ class _ExercicesLibres extends State<ExercicesLibres>{
   @override
   Widget build(BuildContext context) {
     return StructPage(
-      child: ListView( //// permet le scroll vertical
+      child: ListView( // permet le scroll vertical
         shrinkWrap: true,
         children: <Widget>[
           Column(

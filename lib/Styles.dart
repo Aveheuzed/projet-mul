@@ -4,8 +4,10 @@ import 'package:flutter/services.dart';
 
 double screenWidth(BuildContext context) {
   return MediaQuery.of(context).size.width / 768;
-} // récupère les données du device, en l'occurence la largeur de l'écran pour calculer un ratio par rapport à la largeur de l'écran de la maquette
-// il suffit donc de faire screenWidht * larrgeur de l'objet sur la maquette pour obtenir exactement le même rendu
+} // Récupère les données du device, en l'occurence la largeur de l'écran pour
+// calculer un ratio par rapport à la largeur de l'écran de la maquette
+// Il suffit donc de faire screenWidht * largeur de l'objet sur la maquette pour
+// obtenir exactement le même rendu
 
 class Bouton extends StatelessWidget { // responsive
   final String text;
@@ -196,7 +198,8 @@ class Depliant extends StatefulWidget{
   _Depliant createState() => _Depliant();
 }
 
-class _Depliant extends State<Depliant>{ // pas trop responsive, problème avec les changements de ratio, à voir si c'est genant
+class _Depliant extends State<Depliant>{
+  // pas trop responsive, problème avec les changements de ratio, à voir si c'est gênant
 
   List<Widget> child;
   bool etat;
@@ -257,7 +260,10 @@ class DepliantBouton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children:<Widget>[
           SizedBox(width: 0.0),
-          Container( // Pour une raison inconnue la taille du conteneur du bouton est par défaut plus grande que le bouton lui même j'ai donc du l'envelopper dans un containeur de taille identique au bouton
+          Container(
+            // Pour une raison inconnue la taille du conteneur du bouton est
+            // par défaut plus grande que le bouton lui même j'ai donc dû
+            // l'envelopper dans un conteneur de taille identique au bouton
             height: screenWidth(context)*50.0,
             child: Bouton(
               text,
@@ -282,7 +288,9 @@ class ChampReponse extends StatelessWidget { //responsive //height ?
   final Function onSubmitted;
   final TextEditingController controller;
 
-  ChampReponse({this.titre, this.controller, this.onSubmitted, this.onChanged, this.enabled=true, this.fontSizeTitre = 28.0, this.fontSizeReponse = 80, this.width = 279.0}): super();
+  ChampReponse({this.titre, this.controller, this.onSubmitted, this.onChanged,
+    this.enabled=true, this.fontSizeTitre = 28.0, this.fontSizeReponse = 80,
+    this.width = 279.0}): super();
 
   @override
   Widget build(BuildContext context) {
