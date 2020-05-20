@@ -3,10 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'constantes.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
+
+import 'generateurRoute.dart';
 class Exercice2 extends StatefulWidget{
   final int nombre;
-
-  Exercice2({this.nombre}): super();
+ final String operation;
+  final int couleur;
+  Exercice2({this.nombre , this.operation,this.couleur=0xFFFFFFFF}): super();
 
   @override
   _Exercice2 createState() => _Exercice2();
@@ -15,6 +18,7 @@ class Exercice2 extends StatefulWidget{
 class _Exercice2 extends State<Exercice2> {
   _Exercice2() : super();
   int result;
+
   var resultab = new List(11);
   var j;
   int k;
@@ -42,8 +46,8 @@ final titrestyle=TextStyle(
               textAlign: TextAlign.center,
               style: titrestyle,
             ),
-            Text(
-              "La table de multiplication "+ widget.nombre.toString(),
+            Text( widget.operation=='x'?
+              "La table de multiplication "+ widget.nombre.toString(): "La table d'adition "+ widget.nombre.toString(),
               textAlign: TextAlign.center,
               style: titrestyle,
             ),
@@ -59,8 +63,8 @@ final titrestyle=TextStyle(
     children: <Widget>[
       i!=10?
         Padding(padding: EdgeInsets.only(left: 35),
-          child: Text(
-        i.toString()+" x "+ widget.nombre.toString()+" = " ,
+          child: Text(widget.operation=='x'?
+        i.toString()+" x "+ widget.nombre.toString()+" = " :i.toString()+" + "+ widget.nombre.toString()+" = ",
             style: TextStyle(
 
               fontWeight: FontWeight.w900,
@@ -69,9 +73,9 @@ final titrestyle=TextStyle(
             ),
           ),
         )
-        : Padding(padding: EdgeInsets.only(left:7),
-    child: Text(
-    i.toString()+" x "+ widget.nombre.toString()+" = " ,
+        : Padding(padding: EdgeInsets.only(left:9),
+    child: Text(widget.operation=='x'?
+    i.toString()+" x "+ widget.nombre.toString()+" = " :i.toString()+" + "+ widget.nombre.toString()+" = ",
     style: TextStyle(
     fontWeight: FontWeight.w900,
     color: Color(0xff323347),
@@ -104,12 +108,20 @@ final titrestyle=TextStyle(
 
       Padding(padding: EdgeInsets.all(20),
       child:Bouton("Valider", onPressed: ()=>{
-    print(resultab),
+    print(resultab), Navigator.of(context).pushNamed('/exercice2correction',arguments: Arguments(widget.nombre,"+",resultab)),
      k=0,
     for (j= 0; j < resultab.length-1; j++)
+      widget.operation=="x"?{
     if (resultab[j] == (j*widget.nombre)){
-      TextStyle(color: Colors.red),
-    k=k+1,},
+      k=k+1, }
+
+     }
+    :{if (resultab[j] == (j+widget.nombre)){
+          k=k+1,
+        }
+
+      },
+
     if (k==10)
     print("success: " )
     else
@@ -125,7 +137,6 @@ final titrestyle=TextStyle(
 
   @override
   Widget build(BuildContext context) {
-
     return WillPopScope(
       onWillPop: () async => false,// empèche le retour
       child: StructPage(
