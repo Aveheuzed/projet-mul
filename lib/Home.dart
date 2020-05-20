@@ -16,7 +16,7 @@ class _Home extends State<Home>{
       child: SingleChildScrollView(
         child:
           Container(
-            height: MediaQuery.of(context).size.height-120, //sale(quoi que pas forcément plus que d'autre)  mais fonctionnel
+            height: MediaQuery.of(context).size.height,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[

@@ -103,7 +103,7 @@ class _Exercice1 extends State<Exercice1>{
       child: StructPage(
           child: SingleChildScrollView(
             child: Container(
-              height: MediaQuery.of(context).size.height-100,
+              height: MediaQuery.of(context).size.height,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
