@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:testappmult/Styles.dart';
-import 'package:testappmult/Exercice1.dart';
+import 'package:testappmult/Exercices/Exercice1.dart';
+import 'package:testappmult/Resultat.dart';
 
 class Exercice1Correction extends StatelessWidget{
   final int nombre;
@@ -9,8 +10,10 @@ class Exercice1Correction extends StatelessWidget{
   final bool type;//true: double |false: moitié
   final int niveau;
   final bool success;
+  final int num;
+  final int score;
 
-  Exercice1Correction({this.niveau, this.type, this.nombre, this.reponse, this.success = false}): super();
+  Exercice1Correction({this.niveau, this.type, this.nombre, this.reponse, this.success = false, this.num, this.score}): super();
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +30,6 @@ class Exercice1Correction extends StatelessWidget{
     }
     if (success) color = 0xFF0CCC06;
     else color = 0xFFFF0000;
-    if(!success){
-      print("echec");
-
-    }
     return WillPopScope(
       onWillPop: () async => false,// empèche le retour
       child: StructPage(
@@ -44,7 +43,7 @@ class Exercice1Correction extends StatelessWidget{
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Niveau " + niveau.toString(),
+                      num.toString() + "/10\n" +"Niveau " + niveau.toString(),
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Color(0xFF323347),
@@ -78,16 +77,19 @@ class Exercice1Correction extends StatelessWidget{
                     FlatButton(
                         onPressed: (){
                             if(!success){
-                              print("correction");
                               Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => E1Correction(niveau: niveau, type: type, nombre: nombre, success: true,))
+                              MaterialPageRoute(builder: (context) => E1Correction(niveau: niveau, type: type, nombre: nombre, success: true, num: num, score: score))
                               );
                             }else{
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => Exercice1(niveau: niveau))
-                              );
+                              if(num == 10){
+                                Navigator.of(context).pushNamed('/ExercicesLibres');
+                              }else {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => Exercice1(niveau: niveau,num: num+1, score: score))
+                                );
+                              }
                             }
                           },
                         child: ChampReponseCorrection(
@@ -98,11 +100,19 @@ class Exercice1Correction extends StatelessWidget{
                     ),
                     SizedBox(height: 40),
                     Bouton("Suivant", onPressed: (){
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Exercice1(niveau: niveau))
-                      );
-                    }),
+                      if(num == 10){
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Resultat(score: score))
+                        );
+                      }else {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Exercice1(niveau: niveau, num: num+1, score: score))
+                        );
+                      }
+                    }
+                    ),
                   ]
                 ),
               ],
@@ -119,14 +129,15 @@ class E1Correction extends StatelessWidget{
   final bool type;//true: double |false: moitié
   final int niveau;
   final bool success;
+  final int num;
+  final int score;
 
-  E1Correction({this.niveau, this.type, this.nombre, this.success = false}): super();
+  E1Correction({this.niveau, this.type, this.nombre, this.success = false, this.num, this.score}): super();
 
   @override
   Widget build(BuildContext context) {
     String question;
     String titre;
-    int color;
     int reponse;
     if(type){
       question= nombre.toString() + " X 2";
@@ -151,7 +162,7 @@ class E1Correction extends StatelessWidget{
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Niveau " + niveau.toString(),
+                          "Niveau " + niveau.toString() +"\nCorrection" ,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Color(0xFF323347),
@@ -191,11 +202,19 @@ class E1Correction extends StatelessWidget{
                         ),
                         SizedBox(height: 40),
                         Bouton("Suivant", onPressed: (){
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Exercice1(niveau: niveau))
-                          );
-                        }),
+                          if(num == 10){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Resultat(score: score))
+                            );
+                          }else {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Exercice1(niveau: niveau, num: num+1, score: score))
+                            );
+                          }
+                        }
+                        ),
                       ]
                   ),
                 ],
