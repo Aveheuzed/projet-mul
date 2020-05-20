@@ -107,8 +107,9 @@ final titrestyle=TextStyle(
     print(resultab),
      k=0,
     for (j= 0; j < resultab.length-1; j++)
-    if (resultab[j] == (j*widget.nombre))
-    k=k+1,
+    if (resultab[j] == (j*widget.nombre)){
+      TextStyle(color: Colors.red),
+    k=k+1,},
     if (k==10)
     print("success: " )
     else
