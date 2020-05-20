@@ -60,7 +60,7 @@ class _ExercicesLibres extends State<ExercicesLibres>{
                   ),
                   SizedBox(height: 40),
                   Depliant(
-                    titre: 'Double et moitié',
+                    titre: 'Multiplier et diviser',
                     options: <Widget>[
                       DepliantBouton(
                         "Niveau 1",
@@ -78,7 +78,7 @@ class _ExercicesLibres extends State<ExercicesLibres>{
                   ),
                   SizedBox(height: 40),
                   Depliant(
-                    titre: 'Double et moitié',
+                    titre: 'Trouver les multiples',
                     options: <Widget>[
                       DepliantBouton(
                         "Niveau 1",
@@ -96,7 +96,7 @@ class _ExercicesLibres extends State<ExercicesLibres>{
                   ),
                   SizedBox(height: 40),
                   Depliant(
-                    titre: 'Double et moitié',
+                    titre: 'Tables d\'addition',
                     options: <Widget>[
                       DepliantBouton(
                         "Niveau 1",
@@ -114,7 +114,43 @@ class _ExercicesLibres extends State<ExercicesLibres>{
                   ),
                   SizedBox(height: 40),
                   Depliant(
-                    titre: 'Double et moitié',
+                    titre: 'Tables de multiplication',
+                    options: <Widget>[
+                      DepliantBouton(
+                        "Niveau 1",
+                        onPressed: (){},
+                      ),
+                      DepliantBouton(
+                        "Niveau 2",
+                        onPressed: (){},
+                      ),
+                      DepliantBouton(
+                        "Niveau 3",
+                        onPressed: (){},
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 40),
+                  Depliant(
+                    titre: 'Additions à trou',
+                    options: <Widget>[
+                      DepliantBouton(
+                        "Niveau 1",
+                        onPressed: (){},
+                      ),
+                      DepliantBouton(
+                        "Niveau 2",
+                        onPressed: (){},
+                      ),
+                      DepliantBouton(
+                        "Niveau 3",
+                        onPressed: (){},
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 40),
+                  Depliant(
+                    titre: 'Multiplications à trou',
                     options: <Widget>[
                       DepliantBouton(
                         "Niveau 1",
