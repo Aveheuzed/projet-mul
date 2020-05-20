@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:testappmult/Exercice1.dart';
+import 'package:testappmult/Exercices/Exercice1.dart';
+import 'package:testappmult/Exercices/Exercice2.dart';
 import 'package:testappmult/Styles.dart';
 
 class ExercicesLibres extends StatefulWidget{
@@ -64,15 +65,24 @@ class _ExercicesLibres extends State<ExercicesLibres>{
                     options: <Widget>[
                       DepliantBouton(
                         "Niveau 1",
-                        onPressed: (){},
+                          onPressed: (){Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Exercice2(niveau: 1,)),
+                          );},
                       ),
                       DepliantBouton(
                         "Niveau 2",
-                        onPressed: (){},
+                          onPressed: (){Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Exercice2(niveau: 1,)),
+                          );},
                       ),
                       DepliantBouton(
                         "Niveau 3",
-                        onPressed: (){},
+                        onPressed: (){Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Exercice2(niveau: 1,)),
+                        );},
                       ),
                     ],
                   ),

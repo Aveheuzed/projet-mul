@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:testappmult/Styles.dart';
 import 'dart:math';
-import 'package:testappmult/Exercice1Correction.dart';
-import 'package:testappmult/ExerciceLibres.dart';
+import 'package:testappmult/Exercices/Exercice1Correction.dart';
 
 
 class Exercice1 extends StatefulWidget{

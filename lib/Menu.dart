@@ -11,7 +11,7 @@ class Menu extends StatelessWidget{
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Bouton("Éxercices libres", onPressed: (){
+              Bouton("Exercices libres", onPressed: (){
                 Navigator.of(context).pushNamed('/ExercicesLibres');
                 },
               ),

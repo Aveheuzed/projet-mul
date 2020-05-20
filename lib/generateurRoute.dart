@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:testappmult/Home.dart';
 import 'package:testappmult/Menu.dart';
-import 'package:testappmult/ExerciceLibres.dart';
-import 'package:testappmult/Exercice1.dart';
-import 'package:testappmult/Exercice1Correction.dart';
+import 'package:testappmult/Exercices/ExerciceLibres.dart';
+import 'file:///C:/Users/julie/AndroidStudioProjects/projet-mul/lib/Exercices/Exercice1.dart';
+import 'file:///C:/Users/julie/AndroidStudioProjects/projet-mul/lib/Exercices/Exercice1Correction.dart';
 
 
 class GenerateurRoute{

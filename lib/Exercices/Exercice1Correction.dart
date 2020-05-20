@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:testappmult/Styles.dart';
-import 'package:testappmult/Exercice1.dart';
+import 'package:testappmult/Exercices/Exercice1.dart';
 import 'package:testappmult/Resultat.dart';
 
 class Exercice1Correction extends StatelessWidget{
@@ -138,7 +138,6 @@ class E1Correction extends StatelessWidget{
   Widget build(BuildContext context) {
     String question;
     String titre;
-    int color;
     int reponse;
     if(type){
       question= nombre.toString() + " X 2";
