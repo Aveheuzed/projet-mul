@@ -28,7 +28,7 @@ class _Exercice1 extends State<Exercice1>{
   void initState() {
     super.initState();
     nombre= next(2,pow(10,widget.niveau));
-    if (!widget.type && (nombre%2 !=0)) nombre=nombre+1;
+    if (!widget.type && (nombre%2 !=0)) nombre=nombre+1; // s'assure que le nombre soit paire si l'on demande la moitié
 
     children=<Widget>[
       Text(

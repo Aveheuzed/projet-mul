@@ -74,14 +74,14 @@ class _ExercicesLibres extends State<ExercicesLibres>{
                         "Niveau 2",
                           onPressed: (){Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Exercice2(niveau: 1,)),
+                            MaterialPageRoute(builder: (context) => Exercice2(niveau: 2,)),
                           );},
                       ),
                       DepliantBouton(
                         "Niveau 3",
                         onPressed: (){Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Exercice2(niveau: 1,)),
+                          MaterialPageRoute(builder: (context) => Exercice2(niveau: 3,)),
                         );},
                       ),
                     ],

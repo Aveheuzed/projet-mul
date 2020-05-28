@@ -282,7 +282,7 @@ class ChampReponse extends StatelessWidget { //responsive //height ?
   final Function onSubmitted;
   final TextEditingController controller;
 
-  ChampReponse({this.titre, this.controller, this.onSubmitted, this.onChanged, this.enabled=true, this.fontSizeTitre = 28.0, this.fontSizeReponse = 80, this.width = 279.0}): super();
+  ChampReponse({this.titre="", this.controller, this.onSubmitted, this.onChanged, this.enabled=true, this.fontSizeTitre = 28.0, this.fontSizeReponse = 80, this.width = 279.0}): super();
 
   @override
   Widget build(BuildContext context) {
@@ -326,7 +326,7 @@ class ChampReponse extends StatelessWidget { //responsive //height ?
                 textAlign: TextAlign.center,
                 inputFormatters: <TextInputFormatter>[
                   WhitelistingTextInputFormatter.digitsOnly,
-                  LengthLimitingTextInputFormatter(4)
+                  LengthLimitingTextInputFormatter(6)
                 ],
                 keyboardType: TextInputType.numberWithOptions(decimal: false, signed: false),
                 onChanged: onChanged,
@@ -356,10 +356,10 @@ class ChampReponseCorrection extends StatelessWidget{
   final double fontSizeTitre;
   final double fontSizeReponse;
   final double width;
-  final int reponse;
+  final double reponse;
   final int color;
 
-  ChampReponseCorrection({this.titre, this.reponse, this.fontSizeTitre = 28.0, this.fontSizeReponse = 80, this.width = 279.0, this.color=0xFFFFFFFF}):super();
+  ChampReponseCorrection({this.titre="", this.reponse, this.fontSizeTitre = 28.0, this.fontSizeReponse = 80, this.width = 279.0, this.color=0xFFFFFFFF}):super();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -392,7 +392,7 @@ class ChampReponseCorrection extends StatelessWidget{
           ),
           Container(
             child: Text(
-              reponse.toString(),
+              reponse.toStringAsFixed(reponse.truncateToDouble() == reponse ? 0 : 1),
               style: TextStyle(
                   fontWeight: FontWeight.w900,
                   color: Color(0xff323347),

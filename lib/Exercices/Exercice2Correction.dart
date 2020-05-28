@@ -1,32 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:testappmult/Styles.dart';
-import 'package:testappmult/Exercices/Exercice1.dart';
+import 'package:testappmult/Exercices/Exercice2.dart';
 import 'package:testappmult/Resultat.dart';
 
-class Exercice1Correction extends StatelessWidget{
-  final int nombre;
+class Exercice2Correction extends StatelessWidget{
+  final double n1;
+  final int  n2;
   final int reponse;
-  final bool type;//true: double |false: moitié
+  final bool type;//true: multiplier |false: diviser
   final int niveau;
   final bool success;
   final int num;
   final int score;
 
-  Exercice1Correction({this.niveau, this.type, this.nombre, this.reponse, this.success = false, this.num, this.score}): super();
+  Exercice2Correction({this.niveau, this.type, this.n1, this.n2, this.reponse, this.success = false, this.num, this.score}): super();
 
   @override
   Widget build(BuildContext context) {
     String question;
-    String titre;
     int color;
     if(type){
-      question= nombre.toString() + " X 2";
-      titre = "Double";
+      question= n1.toStringAsFixed(n1.truncateToDouble() == n1 ? 0 : 1) + " X " + n2.toString();
     }
     else{
-      question= nombre.toString() + " / 2";
-      titre = "Moitié";
+      question= n1.toStringAsFixed(n1.truncateToDouble() == n1 ? 0 : 1) + " / " + n2.toString();
     }
     if (success) color = 0xFF0CCC06;
     else color = 0xFFFF0000;
@@ -79,7 +77,7 @@ class Exercice1Correction extends StatelessWidget{
                             if(!success){
                               Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => E1Correction(niveau: niveau, type: type, nombre: nombre, success: true, num: num, score: score))
+                              MaterialPageRoute(builder: (context) => E2Correction(niveau: niveau, type: type, n1:n1, n2:n2, success: true, num: num, score: score))
                               );
                             }else{
                               if(num == 10){
@@ -87,13 +85,12 @@ class Exercice1Correction extends StatelessWidget{
                               }else {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => Exercice1(niveau: niveau,num: num+1, score: score))
+                                    MaterialPageRoute(builder: (context) => Exercice2(niveau: niveau,num: num+1, score: score))
                                 );
                               }
                             }
                           },
                         child: ChampReponseCorrection(
-                          titre: titre,
                           reponse: reponse.toDouble(),
                           color: color,
                         ),
@@ -108,7 +105,7 @@ class Exercice1Correction extends StatelessWidget{
                       }else {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Exercice1(niveau: niveau, num: num+1, score: score))
+                            MaterialPageRoute(builder: (context) => Exercice2(niveau: niveau, num: num+1, score: score))
                         );
                       }
                     }
@@ -124,30 +121,29 @@ class Exercice1Correction extends StatelessWidget{
   }
 }
 
-class E1Correction extends StatelessWidget{
-  final int nombre;
+class E2Correction extends StatelessWidget{
+  final double n1;
+  final int n2;
   final bool type;//true: double |false: moitié
   final int niveau;
   final bool success;
   final int num;
   final int score;
 
-  E1Correction({this.niveau, this.type, this.nombre, this.success = false, this.num, this.score}): super();
+  E2Correction({this.niveau, this.type, this.n1, this.n2, this.success = false, this.num, this.score}): super();
 
   @override
   Widget build(BuildContext context) {
     String question;
     String titre;
-    int reponse;
+    double reponse;
     if(type){
-      question= nombre.toString() + " X 2";
-      titre = "Double";
-      reponse = nombre *2;
+      question= n1.toStringAsFixed(n1.truncateToDouble() == n1 ? 0 : 1) + " X " + n2.toString();
+      reponse = n1 * n2;
     }
     else{
-      question= nombre.toString() + " / 2";
-      titre = "Moitié";
-      reponse = (nombre / 2).round();
+      question= n1.toStringAsFixed(n1.truncateToDouble() == n1 ? 0 : 1) + " / " + n2.toString();
+      reponse = (n1 / n2);
     }
     return WillPopScope(
       onWillPop: () async => false,// empèche le retour
@@ -197,7 +193,7 @@ class E1Correction extends StatelessWidget{
                           onPressed: (){print("correction");},
                           child: ChampReponseCorrection(
                             titre: titre,
-                            reponse: reponse.toDouble(),
+                            reponse: reponse,
                           ),
                         ),
                         SizedBox(height: 40),
@@ -210,7 +206,7 @@ class E1Correction extends StatelessWidget{
                           }else {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => Exercice1(niveau: niveau, num: num+1, score: score))
+                                MaterialPageRoute(builder: (context) => Exercice2(niveau: niveau, num: num+1, score: score))
                             );
                           }
                         }
