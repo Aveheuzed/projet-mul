@@ -439,7 +439,7 @@ class ChampReponseCorrectionex2 extends StatelessWidget{
         child:Column(
           children: <Widget>[
             Row( children:<Widget>[
-              Padding( padding: EdgeInsets.only(left: 90),
+              Padding( padding: EdgeInsets.only(left: screenWidth(context)*90),
               child: Text(
                 bn ,
                 style: TextStyle(
@@ -452,7 +452,7 @@ class ChampReponseCorrectionex2 extends StatelessWidget{
             ]),
             Container(
               child:Row( children: <Widget>[
-              Padding( padding: EdgeInsets.only(left: 90),
+              Padding( padding: EdgeInsets.only(left:screenWidth(context)* 90),
               child:  Text(
                 reponse.toString(),
                 style: TextStyle(

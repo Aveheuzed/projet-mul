@@ -108,15 +108,18 @@ final titrestyle=TextStyle(
 
       Padding(padding: EdgeInsets.all(20),
       child:Bouton("Valider", onPressed: ()=>{
-    print(resultab), Navigator.of(context).pushNamed('/exercice2correction',arguments: Arguments(widget.nombre,"+",resultab)),
+        print(resultab),
+        widget.operation=="x"?
+     Navigator.of(context).pushNamed('/exercice2correction',arguments: Arguments(widget.nombre,"x",resultab)) :
+        Navigator.of(context).pushNamed('/exercice2correction',arguments: Arguments(widget.nombre,"+",resultab)) ,
      k=0,
-    for (j= 0; j < resultab.length-1; j++)
-      widget.operation=="x"?{
-    if (resultab[j] == (j*widget.nombre)){
-      k=k+1, }
+    widget.operation=="x"?
+   { for (j= 0; j < resultab.length-1; j++)
 
-     }
-    :{if (resultab[j] == (j+widget.nombre)){
+    if (resultab[j] == (j*widget.nombre))
+      k=k+1, }:
+    {for (j= 0; j < resultab.length-1; j++)
+    if (resultab[j] == (j+widget.nombre)){
           k=k+1,
         }
 
