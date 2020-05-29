@@ -1,26 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'constantes.dart';
-import 'exercice1.dart';
-class Exercice2Correction extends StatefulWidget{
+import 'generateurRoute.dart';
+class Exercice3Correction extends StatefulWidget{
   final int nombre;
   final String operation;
   final List reponse;
+  final int score;
 
-
-  Exercice2Correction({this.nombre, this.operation,this.reponse}): super();
+  Exercice3Correction({this.nombre, this.operation,this.reponse,this.score}): super();
 
   @override
-  _Exercice2correction createState() => _Exercice2correction();
+  _Exercice3correction createState() => _Exercice3correction();
 
 }
 
-class _Exercice2correction extends State<Exercice2Correction> {
-  _Exercice2correction() : super();
+class _Exercice3correction extends State<Exercice3Correction> {
+  _Exercice3correction() : super();
   int result;
-  var resultab = new List(11);
+
   var j;
-  int k;
   int color;
   List<Widget> children;
 
@@ -91,28 +90,40 @@ class _Exercice2correction extends State<Exercice2Correction> {
 
                       child: new ChampReponseCorrection(
 
-                        reponse:  widget.reponse[i],
+                        reponse:  widget.reponse[i].toDouble(),
                         color: 0xFF0CCC06,
                       ),
                     ) : Padding(padding: EdgeInsets.all(30.0),
 
-                      child: new ChampReponseCorrectionex2(
+                      child: widget.reponse[i]!=null?
+                      new ChampReponseCorrectionex2(
                         bn: (i*widget.nombre).toString()  ,
-                        reponse:  widget.reponse[i],
+                        reponse:  widget.reponse[i].toString(),
                         color: 0xffffffff,
-                      ),
+                      ):  new ChampReponseCorrectionex2(
+                        reponse: " ",
+                        bn: (i*widget.nombre).toString()  ,
+                        color: 0xffffffff,
+                      )
                     ): widget.reponse[i]==i+widget.nombre?
                     Padding(padding: EdgeInsets.all(30.0),
 
                       child: new ChampReponseCorrection(
-                        reponse: widget.reponse[i] ,
+                        reponse: widget.reponse[i].toDouble() ,
                         color: 0xFF0CCC06,
                       ),
-                    ) : Padding(padding: EdgeInsets.all(30.0),
+                    ) :
+                    Padding(padding: EdgeInsets.all(30.0),
 
-                      child: new ChampReponseCorrectionex2(
+                      child:  widget.reponse[i]==null?
+                      new ChampReponseCorrectionex2(
+                        reponse: " ",
                         bn: (i+widget.nombre).toString() ,
-                        reponse: widget.reponse[i] ,
+                        color:0xffffffff,
+                      ):
+                      new ChampReponseCorrectionex2(
+                        bn: (i+widget.nombre).toString() ,
+                        reponse: widget.reponse[i].toString() ,
                         color:0xffffffff,
                       ),
                     )
@@ -121,10 +132,11 @@ class _Exercice2correction extends State<Exercice2Correction> {
 
 
             Padding(padding: EdgeInsets.all(20),
-                child: Bouton("Retour", onPressed: () =>
+                child: Bouton("Résultat", onPressed: () =>
                 {
 
-                  Navigator.of(context).pushNamed('/exerciceslibres')})
+                Navigator.of(context).pushNamed('/Resultat',arguments: Arguments(widget.nombre,"",null,widget.score,0))}
+                ),
             ),
           ],
         ),

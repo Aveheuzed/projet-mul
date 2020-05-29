@@ -356,7 +356,7 @@ class ChampReponseCorrection extends StatelessWidget{
   final double fontSizeTitre;
   final double fontSizeReponse;
   final double width;
-  final int reponse;
+  final double reponse;
   final int color;
 
   ChampReponseCorrection({this.titre=null, this.reponse, this.fontSizeTitre = 28.0, this.fontSizeReponse = 80, this.width = 279.0, this.color=0xFFFFFFFF}):super();
@@ -385,7 +385,9 @@ class ChampReponseCorrection extends StatelessWidget{
             if(titre!=null)
             Text(
               titre,
+              textAlign: TextAlign.center,
               style: TextStyle(
+
                 color: Color(0xffB6AAB6),
                 fontWeight: FontWeight.w600,
                 fontSize: fontSizeTitre,
@@ -394,6 +396,7 @@ class ChampReponseCorrection extends StatelessWidget{
             Container(
               child: Text(
                 reponse.toString(),
+                textAlign: TextAlign.center,
                 style: TextStyle(
                     fontWeight: FontWeight.w900,
                     color: Color(0xff323347),
@@ -412,10 +415,10 @@ class ChampReponseCorrectionex2 extends StatelessWidget{
   final double fontSizeTitre;
   final double fontSizeReponse;
   final double width;
-  final int reponse;
+  final String reponse;
   final int color;
 
-  ChampReponseCorrectionex2({this.bn , this.reponse, this.fontSizeTitre = 40.0, this.fontSizeReponse = 40, this.width = 279.0, this.color=0xFFFFFFFF}):super();
+  ChampReponseCorrectionex2({this.bn , this.reponse=null, this.fontSizeTitre = 40.0, this.fontSizeReponse = 40, this.width = 279.0, this.color=0xFFFFFFFF}):super();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -441,7 +444,7 @@ class ChampReponseCorrectionex2 extends StatelessWidget{
             Row( children:<Widget>[
               Padding( padding: EdgeInsets.only(left: screenWidth(context)*90),
               child: Text(
-                bn ,
+                bn ,textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF0CCC06),
                   fontWeight: FontWeight.w700,
@@ -450,18 +453,25 @@ class ChampReponseCorrectionex2 extends StatelessWidget{
               ),),
             Icon( Icons.check, color: Color(0xFF0CCC06),)
             ]),
+            if(reponse.toString()!=null)
             Container(
-              child:Row( children: <Widget>[
+              child:
+              Row( children: <Widget>[
+
               Padding( padding: EdgeInsets.only(left:screenWidth(context)* 90),
-              child:  Text(
-                reponse.toString(),
+
+              child:
+              Text(
+                reponse.toString(),textAlign: TextAlign.center,
                 style: TextStyle(
                     fontWeight: FontWeight.w900,
                     color: Color(0xFFFF0000),
                     fontSize: fontSizeReponse
                 ),
-              ),),
+              ),
+              ),
                 Icon( Icons.close, color: Color(0xFFFF0000),),
+
                 ],
               ),
             )
