@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:multiplication/generateurRoute.dart';
-import 'exercice1.dart';
+
 import 'constantes.dart';
 
 class ExercicesLibres extends StatefulWidget{
@@ -41,24 +41,15 @@ class _ExercicesLibres extends State<ExercicesLibres>{
                       options: <Widget>[
                         DepliantBouton(
                           "Niveau 1",
-                          onPressed: (){Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Exercice1(niveau: 1,)),
-                          );},
+                          onPressed: (){},
                         ),
                         DepliantBouton(
                           "Niveau 2",
-                          onPressed: (){Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Exercice1(niveau: 2,)),
-                          );},
+                          onPressed: (){},
                         ),
                         DepliantBouton(
                           "Niveau 3",
-                          onPressed: (){Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Exercice1(niveau: 3,)),
-                          );},
+                          onPressed: (){},
                         ),
                       ],
                     ),
