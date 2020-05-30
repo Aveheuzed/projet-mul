@@ -30,13 +30,13 @@ class Resultat extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Color(0xFF323347),
-                        fontSize: 40,
+                        fontSize: screenWidth(context) *40,
                         fontWeight: FontWeight.w800
                     ),
                   ),
                   SizedBox(height: 40,),
                   Container(
-                    height: 500,
+                    height: screenWidth(context) *500,
                     child: Row(
                       children: <Widget>[
                         AspectRatio(
@@ -51,10 +51,10 @@ class Resultat extends StatelessWidget {
                                       color: Color(0xFF0CCC06),
                                       title: score.toString()+"/10",
                                       value: score.toDouble(),
-                                      radius: 200,
+                                      radius: screenWidth(context) * 200,
                                       titleStyle: TextStyle(
                                           color: Colors.black,
-                                          fontSize: 50,
+                                          fontSize: screenWidth(context) * 50,
                                           fontWeight: FontWeight.w800
                                       ),
                                     ),
@@ -62,10 +62,10 @@ class Resultat extends StatelessWidget {
                                       color: Color(0xFFFF0000),
                                       title: (10-score).toString()+"/10",
                                       value: 10.0-score,
-                                      radius: 200,
+                                      radius: screenWidth(context) * 200,
                                       titleStyle: TextStyle(
                                           color: Colors.black,
-                                          fontSize: 50,
+                                          fontSize: screenWidth(context) * 50,
                                           fontWeight: FontWeight.w800
                                       ),
                                     ),
@@ -98,7 +98,7 @@ class Resultat extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Color(0xFF323347),
-                        fontSize: 40,
+                        fontSize: screenWidth(context) *40,
                         fontWeight: FontWeight.w800
                     ),
                   ),
@@ -137,8 +137,8 @@ class Indicator extends StatelessWidget {
     return Row(
       children: <Widget>[
         Container(
-          width: size,
-          height: size,
+          width: screenWidth(context) * size,
+          height: screenWidth(context) * size,
           decoration: BoxDecoration(
             shape: isSquare ? BoxShape.rectangle : BoxShape.circle,
             color: color,
@@ -151,7 +151,7 @@ class Indicator extends StatelessWidget {
           text,
           style: TextStyle(
               color: Color(0xFF323347),
-              fontSize: 40,
+              fontSize: screenWidth(context) * 40,
               fontWeight: FontWeight.w800
           ),
         )

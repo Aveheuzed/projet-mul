@@ -100,13 +100,8 @@ class _Exercice2 extends State<Exercice2>{
       ),
       Container(
         padding: EdgeInsets.only(bottom:20),
-        child: Text(
+        child: TextExo(
           "=",
-          style: TextStyle(
-            fontWeight: FontWeight.w900,
-            color: Color(0xff323347),
-            fontSize: 80,
-          ),
         ),
       ),
       ChampReponse(
@@ -115,6 +110,8 @@ class _Exercice2 extends State<Exercice2>{
       SizedBox(height: 40),
       SizedBox(height: 40),
       Bouton("Valider", onPressed: (){test();})
+      ,
+      SizedBox(height: 40)
     ];
 
   }
@@ -158,7 +155,7 @@ class _Exercice2 extends State<Exercice2>{
       child: StructPage(
           child: SingleChildScrollView(
             child: Container(
-              height: MediaQuery.of(context).size.height-100,
+              height: MediaQuery.of(context).size.height,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[

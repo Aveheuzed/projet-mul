@@ -16,9 +16,9 @@ class Menu extends StatelessWidget{
                 },
               ),
               SizedBox(height: 40),
-              Bouton("Exercices encadrés", onPressed: (){}),
+              Bouton("Exercices encadrés", onPressed: null),
               SizedBox(height: 40),
-              Bouton("Résultats", onPressed: (){})
+              Bouton("Résultats", onPressed: null)
             ],
           ),
         ),

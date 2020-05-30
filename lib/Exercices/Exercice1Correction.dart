@@ -54,24 +54,14 @@ class Exercice1Correction extends StatelessWidget{
                     SizedBox(height: 40),
                     Container(
                       padding: EdgeInsets.only(bottom:20),
-                      child: Text(
+                      child: TextExo(
                         question,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w900,
-                          color: Color(0xff323347),
-                          fontSize: 80,
-                        ),
                       ),
                     ),
                     Container(
                       padding: EdgeInsets.only(bottom:20),
-                      child: Text(
+                      child: TextExo(
                         "=",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w900,
-                          color: Color(0xff323347),
-                          fontSize: 80,
-                        ),
                       ),
                     ),
                     FlatButton(
@@ -173,24 +163,14 @@ class E1Correction extends StatelessWidget{
                         SizedBox(height: 40),
                         Container(
                           padding: EdgeInsets.only(bottom:20),
-                          child: Text(
+                          child: TextExo(
                             question,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w900,
-                              color: Color(0xff323347),
-                              fontSize: 80,
-                            ),
                           ),
                         ),
                         Container(
                           padding: EdgeInsets.only(bottom:20),
-                          child: Text(
+                          child: TextExo(
                             "=",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w900,
-                              color: Color(0xff323347),
-                              fontSize: 80,
-                            ),
                           ),
                         ),
                         FlatButton(

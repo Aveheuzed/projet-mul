@@ -35,6 +35,7 @@ class Bouton extends StatelessWidget { // responsive
       minWidth: screenWidth(context) * width,
       elevation: 3,
       onPressed: onPressed,
+      disabledColor: Color(0xffD4D4D4),
     );
   }
 }
@@ -185,10 +186,12 @@ class ChampTexte extends StatelessWidget { //responsive //height ?
 class Depliant extends StatefulWidget{
   final String titre;
   final List<Widget> options;
+  final bool enable;
 
   Depliant({
     this.titre,
     this.options,
+    this.enable = true
   });
 
 
@@ -204,12 +207,22 @@ class _Depliant extends State<Depliant>{ // pas trop responsive, problème avec 
   void initState() {
     super.initState();
     child =[];
-    child.add(
-      Bouton(
-        widget.titre,
-        onPressed: deplier,
-      )
-    );
+    if (widget.enable){
+      child.add(
+          Bouton(
+            widget.titre,
+            onPressed: deplier,
+          )
+      );
+    }else{
+      child.add(
+          Bouton(
+            widget.titre,
+            onPressed: null,
+          )
+      );
+    }
+
     etat = false;
   }
 
@@ -314,7 +327,7 @@ class ChampReponse extends StatelessWidget { //responsive //height ?
               style: TextStyle(
                 color: Color(0xffB6AAB6),
                 fontWeight: FontWeight.w600,
-                fontSize: fontSizeTitre,
+                fontSize: screenWidth(context)* fontSizeTitre,
               ),
             ),
             Padding(
@@ -334,7 +347,7 @@ class ChampReponse extends StatelessWidget { //responsive //height ?
                 style: TextStyle(
                     fontWeight: FontWeight.w900,
                     color: Color(0xff323347),
-                    fontSize: fontSizeReponse
+                    fontSize: screenWidth(context)* fontSizeReponse
                 ),
                 decoration: InputDecoration(
                   border: InputBorder.none,
@@ -402,6 +415,95 @@ class ChampReponseCorrection extends StatelessWidget{
           )
         ],
       )
+    );
+  }
+}
+
+class ChampReponseCorrectionex2 extends StatelessWidget{
+  final String bn;
+  final double fontSizeTitre;
+  final double fontSizeReponse;
+  final double width;
+  final String reponse;
+  final int color;
+
+  ChampReponseCorrectionex2({this.bn , this.reponse=null, this.fontSizeTitre = 40.0, this.fontSizeReponse = 40, this.width = 279.0, this.color=0xFFFFFFFF}):super();
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: EdgeInsets.only(top: screenWidth(context) * 5),
+        width: screenWidth(context)*width,
+
+        decoration: BoxDecoration(
+            color: Color(color),
+            borderRadius: BorderRadius.all(Radius.circular(36)),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                  color: Color(0x10000000),
+                  blurRadius: 6.0,
+                  offset: Offset(
+                      0.0, //x
+                      3.0 //y
+                  )
+              )
+            ]
+        ),
+        child:Column(
+          children: <Widget>[
+            Row( children:<Widget>[
+              Padding( padding: EdgeInsets.only(left: screenWidth(context)*90),
+                child: Text(
+                  bn ,textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0xFF0CCC06),
+                    fontWeight: FontWeight.w700,
+                    fontSize: fontSizeTitre,
+                  ),
+                ),),
+              Icon( Icons.check, color: Color(0xFF0CCC06),)
+            ]),
+            if(reponse.toString()!=null)
+              Container(
+                child:
+                Row( children: <Widget>[
+
+                  Padding( padding: EdgeInsets.only(left:screenWidth(context)* 90),
+
+                    child:
+                    Text(
+                      reponse.toString(),textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          color: Color(0xFFFF0000),
+                          fontSize: fontSizeReponse
+                      ),
+                    ),
+                  ),
+                  Icon( Icons.close, color: Color(0xFFFF0000),),
+
+                ],
+                ),
+              )
+          ],
+        )
+    );
+  }
+}
+
+class TextExo extends StatelessWidget{
+  final String text;
+
+  TextExo ( this.text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontWeight: FontWeight.w900,
+        color: Color(0xff323347),
+        fontSize: screenWidth(context)*80,
+      ),
     );
   }
 }
